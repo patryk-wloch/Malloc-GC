@@ -6,7 +6,7 @@ The simulation mimics how low-level languages, such as C, manage memory at appli
 * Data is generic and composed of fixed-size cells called simply **Data**
 * Pointers to specific locations are recorded as decimal - instead of hexadecimal - values (*e.g. Pointer n can be interpreted as the n-th byte from the start of the heap*)
 
-The implementation was originally in **Miranda** ([Wiki](https://en.wikipedia.org/wiki/Miranda_(programming_language)), a now-niche pure functional language, and a protoplast of **Haskell**. The repo contains both the initial version in Miranda, and a subsequent adaptation in Haskell. 
+The implementation was originally in **Miranda** ([Wiki](https://en.wikipedia.org/wiki/Miranda_(programming_language))), a now-niche pure functional language, and a protoplast of **Haskell**. The repo contains both the initial version in Miranda, and a subsequent adaptation in Haskell. 
 
 Example (from the Haskell version):
 1. Below is a sample possible state of a 200-byte heap, as well as some extra cells including the size of the heap and the pointer to the first free block - it contains some generic data cells, indicators of liveness of different blocks, and some pointers.
