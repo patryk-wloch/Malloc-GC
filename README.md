@@ -10,7 +10,27 @@ The implementation was originally in **Miranda** ([Wiki](https://en.wikipedia.or
 
 Example (from the Haskell version):
 1. Below is a sample possible state of a 200-byte heap, as well as some extra cells including the size of the heap and the pointer to the first free block - it contains some generic data cells, indicators of liveness of different blocks, and some pointers.
-<img width="654" alt="image" src="https://user-images.githubusercontent.com/73844047/129214165-c59e38bd-44d0-4ef7-92f6-3abb1e7a25bd.png">
+```haskell
+mem_start :: Memory
+mem_start =  ([ Live True,Mark False,Size 20,Data,Data,Data,Data,Data,Data,Pointer 26,Data,
+                Data,Data,Data,Data,Data,Pointer 129,Data,Data,Data,Data,Data,Data,Live True,
+                Mark False,Size 5,Data,Pointer 129,Data,Data,Data,Live True,Mark False,Size 30,
+                Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,
+                Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,
+                Live True,Mark False,Size 6,Data,Data,Data,Data,Data,Data,Live True,Mark False,
+                Size 50,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,
+                Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,
+                Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,
+                Data,Data,Data,Data,Data,Data,Live True,Mark False,Size 40,Data,Data,Data,
+                Data,Data,Data,Data,Pointer 3,Data,Data,Data,Pointer 26,Data,Data,Data,Data,
+                Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,
+                Data,Data,Data,Data,Data,Data,Data,Data,Data,Live False,Mark False,Size 12,
+                Pointer 184,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Data,Live False,
+                Mark False,Size 13,Empty,Empty,Empty,Empty,Empty,Empty,Empty,Empty,Empty,Empty,
+                Empty,Empty,Empty ],
+
+                Size 200,Pointer 169,Mark False)
+```
 2. We call the main (malloc) function, requesting it to allocate space for a 10-byte data block.<br>&nbsp;<br>
 <img width="342" alt="image" src="https://user-images.githubusercontent.com/73844047/129214881-32e72812-d1e8-4ee3-98e2-d4d7ca11fe34.png">
 3. The new block has been annotated and the updated memory returned. An additional return value is a Pointer to where the new block was written (here, it's Pointer 187)<br>&nbsp;<br>
