@@ -9,6 +9,8 @@ The simulation mimics how low-level languages, such as C, manage memory at appli
 
 The implementation was originally in **Miranda** ([Wiki](https://en.wikipedia.org/wiki/Miranda_(programming_language))), a now-niche pure functional language, and a protoplast of **Haskell**. The repo contains both the initial version in Miranda, and a subsequent adaptation in Haskell. 
 
+**NB:** In real applications, **malloc** and malloc-like functions don't perform the actual write operation on the data block - instead, they find an appropriate location in the heap and return its address to the caller - data is then written to that location. In this simulator, for demonstration purposes, finding the location *and* performing the write operation are both integrated in **malloc**.
+
 ## Examples (from the Haskell version):
 
 ### Simple memory allocation
