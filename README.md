@@ -90,3 +90,15 @@ malloc mem_start [Data|x<-[1..30]]
 
     Size 200,Pointer 31,Mark False),Pointer 76)
  ```
+ 
+ ### Allocation impossible (no suitable free space even after garbage collection)
+ 
+ 1. On the same sample 200-byte heap, we can malloc requesting allocation of a 100-byte data block.
+```haskell
+malloc mem_start [Data|x<-[1..100]]
+```
+2. Malloc throws an exception, indicating garbage collection was about to be initiated for a second time, i.e. that there was no sufficiently large free space.
+```
+*** Exception: out of memory - mark_scan inititated for the second time
+CallStack (from HasCallStack)
+```
